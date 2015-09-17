@@ -1,0 +1,25 @@
+pkgname=autostart
+pkgdest="simple .desktop reader to start autostart entries in awesome"
+
+pkgver=0.1
+pkgrel=1
+
+arch=("x86_64")
+license=("CC")
+
+depends=("")
+conflicts=("")
+makedepends=("gcc")
+
+source=("autostart.tar.gz::http://dedaa.de/~julian/autostart.tar.gz")
+md5sums=('08af00cd220ee3397f713e3ed5ac50e7')
+
+build() {
+	gcc autostart.c -o "autostart"
+}
+
+package() {
+	mkdir -p "$pkgdir/usr/bin"
+
+	cp autostart "$pkgdir/usr/bin/autostart"
+}
